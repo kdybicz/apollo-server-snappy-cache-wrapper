@@ -24,6 +24,7 @@
     "test:clean": "jest --clearCache",
     "test:watch": "jest --verbose --watchAll",
     "test:ci": "npm run coverage -- --ci --maxWorkers=2  --reporters=default --reporters=jest-junit",
+    "publish": "npm publish --access public",
     "testonly": "npm test",
     "coverage": "npm test -- --coverage"
   },

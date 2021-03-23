@@ -1,5 +1,6 @@
 # Ignore the compiled output.
 lib/
+*.tgz
 
 # TypeScript incremental compilation cache
 *.tsbuildinfo

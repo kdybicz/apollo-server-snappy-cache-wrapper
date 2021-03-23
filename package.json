@@ -23,7 +23,7 @@
   "scripts": {
     "clean": "git clean -dfqX -- ./node_modules ./lib ./tsconfig*tsbuildinfo",
     "compile": "tsc --build tsconfig.json",
-    "compile:clean": "tsc --build tsconfig.json --clean",
+    "precompile": "tsc --build tsconfig.json --clean",
     "test": "jest --verbose",
     "test:clean": "jest --clearCache",
     "test:watch": "jest --verbose --watchAll",

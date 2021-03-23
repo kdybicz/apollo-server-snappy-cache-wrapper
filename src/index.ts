@@ -27,6 +27,8 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
     value: string,
     options?: KeyValueCacheSetOptions,
   ): Promise<void> {
+    debug(`[SET] Storing data in cache for key: ${key}`);
+
     const { minimumCompressionSize } = Object.assign({}, this.defaultSnappyOptions, this.snappyOptions);
 
     if (minimumCompressionSize === undefined || value.length > minimumCompressionSize) {
@@ -42,9 +44,11 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
     }
 
     await this.cache.set(key, value, options);
+    debug(`[SET] Data stored in cached for key: ${key}`);
   }
 
   async get(key: string): Promise<string | undefined> {
+    debug(`[GET] Getting data from cache for key: ${key}`);
     const reply = await this.cache.get(key);
 
     if (reply !== undefined) {

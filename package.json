@@ -3,6 +3,10 @@
   "version": "0.3.0",
   "author": "Kamil Dybicz <kamil.dybicz@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "apollo", "apollo-server", "apollo-server-cache",
+    "apollo-server-caching", "snappy"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/kdybicz/apollo-server-snappy-cache-wrapper"

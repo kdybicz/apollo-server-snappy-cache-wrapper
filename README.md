@@ -5,9 +5,14 @@
 
 This package exports an implementation of `KeyValueCache` that allows wrapping any other
 [Apollo](https://github.com/apollographql/apollo-server) `KeyValueCache` implementation with an
-configurable [Snappy](https://github.com/kesla/node-snappy) compression layer. Its main goal is
+configurable [Brooooooklyn/snappy](https://github.com/Brooooooklyn/snappy) compression layer. Its main goal is
 to limit the amount of memory used by the caching environment and at the same time the amount of
 data being in-transit from and to the caching environment.
+
+**Note:**
+Snappy module has recently moved from hands to hands. Originally it was maintained by
+[kesla/node-snappy](https://github.com/kesla/node-snappy) who was unable to spend more time on it, so 
+[Brooooooklyn/snappy](https://github.com/Brooooooklyn/snappy) took over.
 
 ## Usage
 
@@ -35,7 +40,7 @@ const server = new ApolloServer({
 
 - **minimumCompressionSize** (default: 262144) - defines minimal length of the data _string_, after
   exceeding which data proxied to wrapped cache are compressed by
-  [Snappy](https://github.com/kesla/node-snappy) before being passed forward.
+  [Snappy](https://github.com/Brooooooklyn/snappy) before being passed forward.
 
 ## Debug
 
@@ -56,7 +61,7 @@ DEBUG=snappy-wrapper npm run start
 
 ### invalid ELF header
 
-One of the issues you can encounter when using [Snappy](https://github.com/kesla/node-snappy) in
+One of the issues you can encounter when using [kesla/node-snappy](https://github.com/kesla/node-snappy) in
 your projects is **invalid ELF header** error. From my experience it's happening when you're
 building your package (including _node_modules_) on one operating system and try use it on a
 different operating system, ie. deploying [Serverless](https://github.com/serverless/serverless)

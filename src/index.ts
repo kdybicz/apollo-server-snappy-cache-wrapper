@@ -1,6 +1,7 @@
 import { KeyValueCacheSetOptions, TestableKeyValueCache } from 'apollo-server-caching';
 import Debug from 'debug';
 import snappy from 'snappy';
+import { StringDecoder } from 'string_decoder';
 
 const debug = Debug('snappy-wrapper');
 
@@ -36,7 +37,8 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
       try {
         debug(`[SET] Compression start for key: ${key}`);
 
-        value = this.prefix + snappy.compressSync(value).toString('base64');
+        const buff = Buffer.from(value);
+        value = this.prefix + snappy.compressSync(buff).toString('base64');
       } finally {
         const compressedSize = value.length;
         debug(`[SET] Compression ended - reduced size from: ${uncompressedSize}, to: ${compressedSize}, compression level: ${(1-(compressedSize/uncompressedSize)).toFixed(2)}`);
@@ -57,7 +59,8 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
       if (reply.startsWith(this.prefix)) {
         try {
           debug(`[GET] Decompression start for key: ${key}`);
-          return snappy.uncompressSync(Buffer.from(reply.slice(this.prefix.length), 'base64'), { asBuffer: false }) as string;
+          const buff = snappy.uncompressSync(Buffer.from(reply.slice(this.prefix.length), 'base64'));
+          return new StringDecoder('utf8').end(buff);
         } finally {
           debug(`[GET] Decompression ended`);
         }

@@ -1,27 +1,34 @@
-import { InMemoryLRUCache } from "apollo-server-caching";
-
-import {
-  testKeyValueCache_Basics,
-  testKeyValueCache_Expiration,
-} from "./testsuite";
+import { InMemoryLRUCache, runKeyValueCacheTests } from "apollo-server-caching";
 
 import { SnappyCacheWrapper } from "../index";
 
 describe("SnappyCacheWrapper", () => {
-  const cache = new SnappyCacheWrapper(new InMemoryLRUCache());
+  let cache: SnappyCacheWrapper;
 
-  testKeyValueCache_Basics(cache);
-  testKeyValueCache_Expiration(cache);
+  jest.useFakeTimers();
+
+  beforeEach(() => {
+    cache = new SnappyCacheWrapper(new InMemoryLRUCache());
+  })
+
+  it('Apollo own caching test suite', async () => {
+    try {
+      await runKeyValueCacheTests(cache, (ms: number) => jest.advanceTimersByTime(ms));
+    } finally {
+      jest.clearAllTimers();
+    }
+  });
 });
 
 describe("SnappyCacheWrapper - Compression", () => {
-  const wrappedCache = new InMemoryLRUCache();
-  const cache = new SnappyCacheWrapper(wrappedCache, {
-    minimumCompressionSize: 11,
-  });
+  let wrappedCache: InMemoryLRUCache;
+  let cache: SnappyCacheWrapper;
 
   beforeEach(() => {
-    cache.flush();
+    wrappedCache = new InMemoryLRUCache();
+    cache = new SnappyCacheWrapper(wrappedCache, {
+      minimumCompressionSize: 11,
+    });
   });
 
   it("Values smaller that minimumCompressionSize are not compressed", async () => {

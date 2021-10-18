@@ -100,7 +100,7 @@ custom:
     includeModules: true
     packagerOptions:
       scripts:
-        - npm_config_platform=linux npm_config_arch=x64 yarn add sharp
+        - yarn add --ignore-platform --ignore-optional @napi-rs/snappy-linux-x64-gnu
 ```
 
 - Another approach would be to have a build script that starts and works in a **Docker** container,

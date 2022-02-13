@@ -1,5 +1,7 @@
 ## SnappyCacheWrapper
 
+[![Tests](https://github.com/kdybicz/apollo-server-snappy-cache-wrapper/actions/workflows/tests.yml/badge.svg)](https://github.com/kdybicz/apollo-server-snappy-cache-wrapper/actions/workflows/tests.yml)
+[![CodeQL](https://github.com/kdybicz/apollo-server-snappy-cache-wrapper/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kdybicz/apollo-server-snappy-cache-wrapper/actions/workflows/codeql-analysis.yml)
 [![npm version](https://badge.fury.io/js/apollo-server-snappy-cache-wrapper.svg)](https://badge.fury.io/js/apollo-server-snappy-cache-wrapper)
 [![npm downloads](https://img.shields.io/npm/dw/apollo-server-snappy-cache-wrapper)](https://www.npmjs.com/package/apollo-server-snappy-cache-wrapper)
 

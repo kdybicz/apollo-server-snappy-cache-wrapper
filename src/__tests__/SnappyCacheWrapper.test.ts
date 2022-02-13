@@ -70,7 +70,7 @@ describe("SnappyCacheWrapper - Compression", () => {
     // then:
     expect(result).toMatch(/snappy\:.*/);
     // and:
-    expect(result.length).toBeLessThan(testValue.length);
+    expect(result?.length).toBeLessThan(testValue.length);
   });
 
   it("Not compressed values are returned as is", async () => {

@@ -5,9 +5,9 @@
 
 This package exports an implementation of `KeyValueCache` that allows wrapping any other
 [Apollo](https://github.com/apollographql/apollo-server) `KeyValueCache` implementation with an
-configurable [Snappy](https://github.com/kesla/node-snappy) compression layer. It's main goal is
-to limit the amount of memory used by the caching environment and the amount of data being
-in-transit from and to the cache environment.
+configurable [Snappy](https://github.com/kesla/node-snappy) compression layer. Its main goal is
+to limit the amount of memory used by the caching environment and at the same time the amount of
+data being in-transit from and to the caching environment.
 
 ## Usage
 

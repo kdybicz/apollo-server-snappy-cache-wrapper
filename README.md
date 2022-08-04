@@ -1,6 +1,7 @@
 ## SnappyCacheWrapper
 
 [![npm version](https://badge.fury.io/js/apollo-server-snappy-cache-wrapper.svg)](https://badge.fury.io/js/apollo-server-snappy-cache-wrapper)
+[![npm downloads](https://img.shields.io/npm/dw/apollo-server-snappy-cache-wrapper)](https://www.npmjs.com/package/apollo-server-snappy-cache-wrapper)
 
 This package exports an implementation of `KeyValueCache` that allows wrapping any other
 [Apollo](https://github.com/apollographql/apollo-server) `KeyValueCache` implementation with an

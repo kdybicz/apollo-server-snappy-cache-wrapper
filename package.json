@@ -1,6 +1,6 @@
 {
   "name": "apollo-server-snappy-cache-wrapper",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "Kamil Dybicz <kamil.dybicz@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -11,13 +11,13 @@
   "bugs": {
     "url": "https://github.com/kdybicz/apollo-server-snappy-cache-wrapper/issues"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "engines": {
     "node": ">=8"
   },
   "scripts": {
-    "clean": "git clean -dfqX -- ./node_modules **/{dist,node_modules}/ ./tsconfig*tsbuildinfo",
+    "clean": "git clean -dfqX -- ./node_modules ./lib ./tsconfig*tsbuildinfo",
     "compile": "tsc --build tsconfig.json",
     "compile:clean": "tsc --build tsconfig.json --clean",
     "test": "jest --verbose",
@@ -25,7 +25,6 @@
     "test:watch": "jest --verbose --watchAll",
     "test:ci": "npm run coverage -- --ci --maxWorkers=2  --reporters=default --reporters=jest-junit",
     "prepublish": "npm run compile",
-    "publish": "np",
     "testonly": "npm test",
     "coverage": "npm test -- --coverage"
   },
@@ -40,5 +39,11 @@
     "jest-junit": "^12.0.0",
     "np": "^7.4.0",
     "ts-jest": "^26.5.3"
-  }
+  },
+  "files": [
+    "package.json",
+    "/lib",
+    "LICENSE",
+    "README.md"
+  ]
 }

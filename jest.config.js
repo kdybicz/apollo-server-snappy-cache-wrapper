@@ -7,7 +7,7 @@ module.exports = {
   testRegex: "/__tests__/.*\\.test\\.(js|ts)$",
   testPathIgnorePatterns: [
     "/node_modules/",
-    "/dist/"
+    "/lib/"
   ],
   moduleFileExtensions: [...defaults.moduleFileExtensions, "ts", "tsx"],
   clearMocks: true,

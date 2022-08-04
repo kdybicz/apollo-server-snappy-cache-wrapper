@@ -1,4 +1,4 @@
-import { KeyValueCacheSetOptions, TestableKeyValueCache } from 'apollo-server-caching';
+import { KeyValueCacheSetOptions, KeyValueCache } from 'apollo-server-caching';
 import Debug from 'debug';
 import snappy from 'snappy';
 import { StringDecoder } from 'string_decoder';
@@ -9,7 +9,7 @@ export interface SnappyOptions {
   minimumCompressionSize?: number;
 }
 
-export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
+export class SnappyCacheWrapper implements KeyValueCache<string>  {
 
   readonly defaultSnappyOptions: SnappyOptions = {
     minimumCompressionSize: 262144,
@@ -17,7 +17,7 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
   readonly prefix = 'snappy:';
 
   constructor(
-    private readonly cache: TestableKeyValueCache<string>,
+    private readonly cache: KeyValueCache<string>,
     private readonly snappyOptions: SnappyOptions = {},
   ) {
     debug(`Creating a Snappy Wrapper for ${cache.constructor.name} with options: %j`, snappyOptions);
@@ -77,23 +77,5 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
   async delete(key: string): Promise<boolean | void> {
     debug(`[DELETE] Removing data for key: ${key}`);
     await this.cache.delete(key);
-  }
-
-  // Drops all data from the cache. This should only be used by test suites ---
-  // production code should never drop all data from an end user cache (and
-  // notably, PrefixingKeyValueCache intentionally doesn't implement this).
-  async flush(): Promise<void> {
-    if (typeof this.cache.flush === 'function') {
-      debug(`[FLUSH] Flushing cache`);
-      await this.cache.flush();
-    }
-  }
-
-  // Close connections associated with this cache.
-  async close(): Promise<void> {
-    if (typeof this.cache.close === 'function') {
-      debug(`[CLOSE] Closing connection`);
-      await this.cache.close();
-    }
   }
 }

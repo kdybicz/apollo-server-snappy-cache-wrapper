@@ -17,7 +17,7 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
 
   constructor(
     private readonly cache: TestableKeyValueCache<string>,
-    private readonly snappyOptions?: SnappyOptions,
+    private readonly snappyOptions: SnappyOptions = {},
   ) {
     debug(`Creating a Snappy Wrapper for ${cache.constructor.name} with options: %j`, snappyOptions);
   }
@@ -31,13 +31,15 @@ export class SnappyCacheWrapper implements TestableKeyValueCache<string>  {
 
     const { minimumCompressionSize } = Object.assign({}, this.defaultSnappyOptions, this.snappyOptions);
 
-    if (minimumCompressionSize === undefined || value.length > minimumCompressionSize) {
+    const uncompressedSize = value.length;
+    if (minimumCompressionSize === undefined || uncompressedSize > minimumCompressionSize) {
       try {
         debug(`[SET] Compression start for key: ${key}`);
 
         value = this.prefix + snappy.compressSync(value).toString('base64');
       } finally {
-        debug(`[SET] Compression ended`);
+        const compressedSize = value.length;
+        debug(`[SET] Compression ended - reduced size from: ${uncompressedSize}, to: ${compressedSize}, compression level: ${(1-(compressedSize/uncompressedSize)).toFixed(2)}`);
       }
     } else {
       debug(`[SET] No data compression needed for key: ${key}`);

@@ -1,6 +1,6 @@
 {
   "name": "apollo-server-snappy-cache-wrapper",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": "Kamil Dybicz <kamil.dybicz@gmail.com>",
   "description": "Snappy compression layer for Apollo Server Caching modules.",
   "license": "MIT",

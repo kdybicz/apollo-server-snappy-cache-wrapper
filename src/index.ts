@@ -59,7 +59,7 @@ export class SnappyCacheWrapper implements KeyValueCache<string>  {
       if (reply.startsWith(this.prefix)) {
         try {
           debug(`[GET] Decompression start for key: ${key}`);
-          const buff = snappy.uncompressSync(Buffer.from(reply.slice(this.prefix.length), 'base64'));
+          const buff = snappy.uncompressSync(Buffer.from(reply.slice(this.prefix.length), 'base64'), { asBuffer: true }) as Buffer;
           return new StringDecoder('utf8').end(buff);
         } finally {
           debug(`[GET] Decompression ended`);

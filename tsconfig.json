@@ -17,7 +17,7 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es2017", "esnext.asynciterable"],
-    "types": ["node"],
+    "types": ["node", "@types/jest"],
     "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./lib"

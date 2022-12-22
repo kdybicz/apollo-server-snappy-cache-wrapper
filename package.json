@@ -1,6 +1,6 @@
 {
   "name": "apollo-server-snappy-cache-wrapper",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "author": "Kamil Dybicz <kamil.dybicz@gmail.com>",
   "description": "Snappy compression layer for Apollo Server Caching modules.",
   "license": "MIT",
@@ -39,17 +39,17 @@
   "dependencies": {
     "apollo-server-caching": "^3.3.0",
     "debug": "^4.3.4",
-    "snappy": "^7.1.1"
+    "snappy": "^7.2.2"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
-    "@types/jest": "^28.1.6",
+    "@types/jest": "^28.1.8",
     "jest": "^28.1.3",
     "jest-config": "^28.1.3",
-    "jest-junit": "^14.0.0",
+    "jest-junit": "^14.0.1",
     "np": "^7.6.2",
-    "ts-jest": "^28.0.7",
-    "typescript": "^4.7.4"
+    "ts-jest": "^28.0.8",
+    "typescript": "^4.9.4"
   },
   "files": [
     "package.json",
